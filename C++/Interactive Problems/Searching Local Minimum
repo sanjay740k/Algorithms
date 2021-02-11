@@ -1,0 +1,36 @@
+// It is an Interactive problem from Codeforces
+// Searching Local Minimum
+
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl "\n"
+#define FAST_IO  ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL)
+
+int query(int mid){
+    cout << "? " << mid << "\n";
+    cout.flush();
+    cin >> mid;
+    return mid;
+}
+
+void solve()
+{
+    int i=1,n,j;
+    cin >> n ;
+    j=n;
+    while(n!=1 && i<=j) {
+        int mid = (j+i) / 2;
+        if(mid==n || query(mid)<query(mid+1)) j = mid-1;
+        else i = mid+1;
+    }
+    cout << "! " << i << "\n";
+}
+
+int32_t main()
+{
+    FAST_IO;
+    int t=1;//cin>>t;
+    for(int i=1;i<=t;i++){solve();}
+    return 0;
+}
