@@ -1,0 +1,35 @@
+// Factorials of large numbers
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string solve(int n){
+    int i,j,c=0,y,x;
+    string s="1";
+    for(i=2;i<=n;i++){
+        for(j=s.size()-1;j>=0;j--){
+            x=s[j]-'0';
+            y=x*i+c;
+            char cc = '0'+y%10 ;
+            s[j]=cc;
+            c=y/10;
+        }
+        while(c){
+            char cc = '0'+c%10 ;
+            s = (cc)+s;
+            c/=10;
+        }
+    }
+    return s;
+}
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--){
+	    int n;
+	    cin >> n;
+	    cout << solve(n) << endl;
+	}
+	return 0;
+}
