@@ -1,0 +1,44 @@
+// Array Manipulation from HackerRank
+
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+#define fi first
+#define se second
+#define pb push_back
+#define pr pair<int,int>
+#define PI 3.1415926535897932384626
+#define mod 1000000007
+#define fo(i,n) for(i=0;i<n;i++)
+#define endl "\n"
+#define mset(m,v) memset(m,v,sizeof(m))
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+typedef vector<int>   vi;
+#define FAST_IO  ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL)
+const int N=100005;
+
+void solve()
+{
+    int n,q,i,ans=-1,s=0,l,r,val;
+    cin >> n >> q;
+    vi v(n+1);
+    for(i=0;i<q;i++){
+        cin >> l >> r >> val;
+        v[l-1]+=val;
+        v[r]-=val;
+    }
+    for(i=0;i<n;i++){
+        s+=v[i];
+        ans=max(s,ans);
+    }
+    cout << ans << endl;
+}
+
+int32_t main()
+{
+    FAST_IO;
+    int t=1;//cin>>t;
+    for(int i=1;i<=t;i++){solve();}
+    return 0;
+}
