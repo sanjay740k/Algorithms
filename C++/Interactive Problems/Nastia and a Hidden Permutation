@@ -1,0 +1,72 @@
+// It is an Interactive problem from Codeforces
+//Nastia and a Hidden Permutation
+
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+#define fi first
+#define se second
+#define pb push_back
+#define pr pair<int,int>
+#define PI 3.1415926535897932384626
+#define mod 1000000007
+#define fo(i,n) for(i=0;i<n;i++)
+#define endl "\n"
+#define mset(m,v) memset(m,v,sizeof(m))
+#define max3(a,b,c) max(a,max(b,c))
+#define min3(a,b,c) min(a,min(b,c))
+typedef vector<int>   vi;
+#define FAST_IO  ios_base::sync_with_stdio(0);cin.tie(NULL);cout.tie(NULL)
+const int N=100005;
+
+int query(int t, int i, int j, int x)
+{
+    cout << "? " << t << " " << i << " " << j << " " << x << "\n";
+    cout.flush();
+    cin >> x;
+    return x;
+}
+
+void solve()
+{
+    int n,k,i,f;
+    cin >> n ;
+    f=n;
+    vi a(n);
+    for(i=1;i<n;i+=2){
+        k = query(1,i,i+1,n-1);
+        if(k == n){
+            f=i+1; break;
+        }
+        else if(k == n-1){
+            if(query(1,i+1,i,n-1) == n){
+                f=i; break;
+            }
+        }
+    }
+    a[f-1] = n;
+    for(i=1;i<=n;i++){
+        if(i==f) continue;
+        a[i-1] = query(2,i,f,1);
+    }
+    cout << "! ";
+    for(auto x : a){
+        cout << x << ' ';
+    }
+    cout << "\n";
+    cout.flush();
+}
+
+int32_t main()
+{
+    FAST_IO;
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+    int t=1;cin>>t;
+    for(int i=1;i<=t;i++){
+        //cout << "Case #" << i << ": " ;
+        solve();}
+    return 0;
+}
